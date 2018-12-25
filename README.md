@@ -36,7 +36,7 @@ PubSubJS.subscribe('abc', data => {
 })
 
 // Publish to topic "acb"
-PubSubJS.publish("abc", "Hello)
+PubSubJS.publish('abc', 'Hello')
 ```
 
 ## API
