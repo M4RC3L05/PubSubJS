@@ -1,7 +1,21 @@
 {
-  "name": "jsPubSub",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "M4RC3L05 <joaobat@live.com.pt>",
-  "license": "MIT"
+    "name": "jsPubSub",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "M4RC3L05 <joaobat@live.com.pt>",
+    "license": "MIT",
+    "scripts": {
+        "start": "ts-node index.ts",
+        "build:web": "webpack --mode production"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.2.3",
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.2.3",
+        "@babel/preset-typescript": "^7.1.0",
+        "babel-loader": "^8.0.4",
+        "typescript": "^3.2.2",
+        "webpack": "^4.28.2",
+        "webpack-cli": "^3.1.2"
+    }
 }
