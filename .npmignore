@@ -1,0 +1,9 @@
+src
+.tsconfig
+.webpack
+dist
+indexWeb.ts
+index.ts
+node_modules
+!lib/src/**/*
+a.js

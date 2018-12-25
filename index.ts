@@ -1,3 +1,3 @@
 import PubSubJS from './src/PubSubJS'
 
-export { PubSubJS as default }
+export default PubSubJS

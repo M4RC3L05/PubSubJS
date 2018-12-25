@@ -1,7 +1,9 @@
 {
-    "name": "pubsubjs",
-    "version": "0.1.0",
+    "name": "pubsubjs-m4r",
+    "version": "0.1.3",
     "author": "M4RC3L05 <joaobat@live.com.pt>",
+    "main": "./lib/index.js",
+    "description": "PubSub for node and the web",
     "license": "MIT",
     "scripts": {
         "build:web:all": "yarn build:web:prod && build:web:dev",
@@ -20,5 +22,8 @@
         "typescript": "^3.2.2",
         "webpack": "^4.28.2",
         "webpack-cli": "^3.1.2"
+    },
+    "dependencies": {
+        "pubsubjs-m4r": "^0.1.3"
     }
 }
