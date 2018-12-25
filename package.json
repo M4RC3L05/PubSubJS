@@ -1,6 +1,6 @@
 {
     "name": "pubsubjs-m4r",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "author": "M4RC3L05 <joaobat@live.com.pt>",
     "main": "./lib/index.js",
     "description": "PubSub for node and the web",
