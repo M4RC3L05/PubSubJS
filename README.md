@@ -28,6 +28,8 @@ Simple pubsub solution for node and web
 
 ```javascript
 import PubSubJS from 'pubsubjs-m4r'
+// Or
+// const PubSubJS = require("pubsubjs-m4r").default
 
 // Subscribe to topic "abc"
 PubSubJS.subscribe('abc', data => {
