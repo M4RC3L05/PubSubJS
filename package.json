@@ -1,18 +1,21 @@
 {
     "name": "jsPubSub",
-    "version": "1.0.0",
-    "main": "index.js",
+    "version": "0.1.0",
+    "main": "lib/index.js",
     "author": "M4RC3L05 <joaobat@live.com.pt>",
     "license": "MIT",
     "scripts": {
-        "start": "ts-node index.ts",
-        "build:web": "webpack --mode production"
+        "build:web:all": "yarn build:web:prod && build:web:dev",
+        "build:web:prod": "yarn ts:web && yarn webpack:web:prod",
+        "build:web:dev": "yarn ts:web && yarn webpack:web:dev",
+        "webpack:web:dev": "webpack --mode production --config .webpack/webpack.web.dev.config.js",
+        "webpack:web:prod": "webpack --mode production --config .webpack/webpack.web.prod.config.js",
+        "ts:web": "tsc --p .tsconfig/tsconfig.web.json",
+        "ts:node": "tsc --p .tsconfig/tsconfig.node.json"
     },
     "devDependencies": {
-        "@babel/cli": "^7.2.3",
         "@babel/core": "^7.2.2",
         "@babel/preset-env": "^7.2.3",
-        "@babel/preset-typescript": "^7.1.0",
         "babel-loader": "^8.0.4",
         "typescript": "^3.2.2",
         "webpack": "^4.28.2",
