@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
     target: 'web',
-    entry: './src/index.ts',
+    entry: './indexWeb.ts',
     output: {
         path: path.resolve(__dirname, '..', 'dist'),
         filename: 'pubsub.prod.js',
@@ -13,7 +13,7 @@ module.exports = {
         rules: [{ test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ }]
     },
     resolve: {
-        extensions: ['.js', '.ts']
+        extensions: ['.js']
     },
     optimization: {
         minimize: true
