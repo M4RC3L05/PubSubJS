@@ -5,7 +5,7 @@ dist
 indexWeb.ts
 index.ts
 node_modules
-!lib/src/**/*
+!lib/**/*
 a.js
 index.js
 indexWeb.js
