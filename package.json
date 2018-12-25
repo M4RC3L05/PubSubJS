@@ -1,24 +1,27 @@
 {
     "name": "pubsubjs-m4r",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "author": "M4RC3L05 <joaobat@live.com.pt>",
     "main": "./lib/index.js",
     "description": "PubSub for node and the web",
     "license": "MIT",
+    "homepage": "https://github.com/M4RC3L05/PubSubJS",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/M4RC3L05/PubSubJS"
+    },
     "scripts": {
         "build:web:all": "yarn build:web:prod && build:web:dev",
         "build:web:prod": "yarn ts:web && yarn webpack:web:prod",
         "build:web:dev": "yarn ts:web && yarn webpack:web:dev",
         "webpack:web:dev": "webpack --mode production --config .webpack/webpack.web.dev.config.js",
         "webpack:web:prod": "webpack --mode production --config .webpack/webpack.web.prod.config.js",
-        "ts:web": "tsc --p .tsconfig/tsconfig.web.json",
         "ts:node": "tsc --p .tsconfig/tsconfig.node.json"
     },
     "devDependencies": {
         "@babel/core": "^7.2.2",
         "@babel/preset-env": "^7.2.3",
         "babel-loader": "^8.0.4",
-        "ts-loader": "^5.3.2",
         "typescript": "^3.2.2",
         "webpack": "^4.28.2",
         "webpack-cli": "^3.1.2"
