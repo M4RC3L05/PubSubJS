@@ -7,11 +7,11 @@ Simple pubsub solution for node and web
 -   CDN
     -   Production
         ```html
-        <script src="https://unpkg.com/pubsubjs-m4r@0.1.7/umd/pubsubjs.prod.js"></script>
+        <script src="https://unpkg.com/pubsubjs-m4r@0.1.8/umd/pubsubjs.prod.js"></script>
         ```
     -   Development
         ```html
-        <script src="https://unpkg.com/pubsubjs-m4r@0.1.7/umd/pubsubjs.dev.js"></script>
+        <script src="https://unpkg.com/pubsubjs-m4r@0.1.8/umd/pubsubjs.dev.js"></script>
         ```
 -   npm
 
