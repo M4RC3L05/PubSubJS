@@ -102,3 +102,5 @@ out
 build
 lib
 index.js
+indexWeb.js
+umd

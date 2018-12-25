@@ -7,3 +7,5 @@ index.ts
 node_modules
 !lib/src/**/*
 a.js
+index.js
+indexWeb.js

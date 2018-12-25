@@ -2,9 +2,9 @@ const path = require('path')
 
 module.exports = {
     target: 'web',
-    entry: './src/indexWeb.js',
+    entry: './indexWeb.js',
     output: {
-        path: path.resolve(__dirname, '..', 'dist'),
+        path: path.resolve(__dirname, '..', 'umd'),
         filename: 'pubsubjs.dev.js',
         libraryTarget: 'umd',
         umdNamedDefine: true
