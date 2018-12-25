@@ -56,7 +56,7 @@ PubSubJS.publish('abc', 'Hello')
 
     ```
 
-    -   Publish - publisshes to a given topic
+    -   Publish - publishes to a given topic
 
     ```typescript
     publish: (topic: string, data: any, sync?: boolean) => void;
