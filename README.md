@@ -16,7 +16,7 @@ Simple pubsub solution for node and web
 -   npm
 
     ```bash
-    npm i -s pubsubjs-m4r
+    npm i -S pubsubjs-m4r
     ```
 
 -   yarn
