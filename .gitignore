@@ -104,3 +104,4 @@ lib
 index.js
 indexWeb.js
 umd
+*.html
