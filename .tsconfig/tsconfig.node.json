@@ -5,9 +5,10 @@
         "module": "commonjs",
         "declaration": true,
         "declarationMap": true,
-        "moduleResolution": "node",
+        //"moduleResolution": "node",
         "sourceMap": true,
         "outDir": "./../dist/lib",
-        "strict": true
+        "strict": true,
+        "noImplicitAny": false
     }
 }
