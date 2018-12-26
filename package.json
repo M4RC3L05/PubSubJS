@@ -2,7 +2,7 @@
     "name": "pubsubjs-m4r",
     "version": "0.1.12",
     "author": "M4RC3L05 <joaobat@live.com.pt>",
-    "main": "./lib/index.js",
+    "main": "./dist/lib/index.js",
     "description": "PubSub for node and the web",
     "license": "MIT",
     "homepage": "https://github.com/M4RC3L05/PubSubJS",
@@ -11,20 +11,17 @@
         "url": "https://github.com/M4RC3L05/PubSubJS"
     },
     "scripts": {
-        "build:web:all": "yarn build:web:prod && yarn build:web:dev",
-        "build:web:prod": "yarn ts:web && yarn webpack:web:prod",
-        "build:web:dev": "yarn ts:web && yarn webpack:web:dev",
-        "webpack:web:dev": "webpack --mode production --config .webpack/webpack.web.dev.config.js",
-        "webpack:web:prod": "webpack --mode production --config .webpack/webpack.web.prod.config.js",
+        "build:all": "yarn build:node && yarn build:web",
+        "build:web": "yarn build:web:prod && yarn build:web:dev",
+        "build:web:dev": "yarn ts:web && rollup -c rollup.config.web.dev.js",
+        "build:web:prod": "yarn ts:web && rollup -c rollup.config.web.prod.js",
+        "build:node": "yarn ts:node",
         "ts:node": "tsc --p .tsconfig/tsconfig.node.json",
         "ts:web": "tsc --p .tsconfig/tsconfig.web.json"
     },
     "devDependencies": {
-        "@babel/core": "^7.2.2",
-        "@babel/preset-env": "^7.2.3",
-        "babel-loader": "^8.0.4",
-        "typescript": "^3.2.2",
-        "webpack": "^4.28.2",
-        "webpack-cli": "^3.1.2"
+        "rollup": "^0.68.2",
+        "rollup-plugin-uglify": "^6.0.0",
+        "typescript": "^3.2.2"
     }
 }
