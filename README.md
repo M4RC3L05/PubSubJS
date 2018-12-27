@@ -1,5 +1,7 @@
 # PubSubJS
 
+[![Build Status](https://travis-ci.org/M4RC3L05/PubSubJS.svg?branch=master)](https://travis-ci.org/M4RC3L05/PubSubJS)
+
 Simple pubsub solution for node and web
 
 ## Use
