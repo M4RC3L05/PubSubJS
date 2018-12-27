@@ -1,6 +1,6 @@
 {
     "name": "pubsubjs-m4r",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "author": "M4RC3L05 <joaobat@live.com.pt>",
     "main": "./dist/lib/index.js",
     "description": "PubSub for node and the web",
@@ -19,7 +19,9 @@
         "ts:node": "tsc --p .tsconfig/tsconfig.node.json",
         "ts:web": "tsc --p .tsconfig/tsconfig.web.json",
         "test:web": "jest -c jest.config.web.js",
+        "test:web:watch": "jest -c jest.config.web.js --watchAll",
         "test:node": "jest -c jest.config.node.js",
+        "test:node:watch": "jest -c jest.config.node.js --watchAll",
         "test:all": "yarn test:web && yarn test:node"
     },
     "devDependencies": {
