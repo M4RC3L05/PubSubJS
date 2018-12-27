@@ -105,3 +105,5 @@ index.js
 indexWeb.js
 umd
 *.html
+!dev.html
+!prod.html
