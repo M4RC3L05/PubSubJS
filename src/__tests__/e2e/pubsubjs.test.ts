@@ -35,7 +35,7 @@ describe('PubSubJS e2e tests', () => {
     it('Should expose the PubSubJS api to the window object [DEV]', async () => {
         browser = await puppeteer.launch()
         const page = await browser.newPage()
-        await page.goto('http://127.0.0.1:8080/dev.html')
+        await page.goto('http://127.0.0.1:1234/dev.html')
 
         const h1content = JSON.parse(
             await page.evaluate(() =>
@@ -77,7 +77,7 @@ describe('PubSubJS e2e tests', () => {
     it('Should expose the PubSubJS api to the window object [PROD]', async () => {
         browser = await puppeteer.launch()
         const page = await browser.newPage()
-        await page.goto('http://127.0.0.1:8080/prod.html')
+        await page.goto('http://127.0.0.1:1234/prod.html')
 
         const h1content = JSON.parse(
             await page.evaluate(() =>
