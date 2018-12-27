@@ -9,7 +9,7 @@ describe('PubSubJS e2e tests', () => {
     beforeAll(async () => {
         server = new StaticServer({
             rootPath: path.resolve(__dirname, 'html'),
-            port: 8080,
+            port: process.env.PORT || 8080,
             host: '127.0.0.1',
             cors: '*'
         })
