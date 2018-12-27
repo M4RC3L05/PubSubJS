@@ -10,7 +10,6 @@ describe('PubSubJS e2e tests', () => {
         server = new StaticServer({
             rootPath: path.resolve(__dirname, 'html'),
             port: 1234,
-            host: '127.0.0.1',
             cors: '*'
         })
         await new Promise(r =>
@@ -33,7 +32,10 @@ describe('PubSubJS e2e tests', () => {
     })
 
     it('Should expose the PubSubJS api to the window object [DEV]', async () => {
-        browser = await puppeteer.launch()
+        browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            dumpio: true
+        })
         const page = await browser.newPage()
         await page.goto('http://127.0.0.1:1234/dev.html')
 
@@ -75,7 +77,10 @@ describe('PubSubJS e2e tests', () => {
     })
 
     it('Should expose the PubSubJS api to the window object [PROD]', async () => {
-        browser = await puppeteer.launch()
+        browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            dumpio: true
+        })
         const page = await browser.newPage()
         await page.goto('http://127.0.0.1:1234/prod.html')
 
