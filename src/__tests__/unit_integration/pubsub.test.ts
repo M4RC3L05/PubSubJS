@@ -1,4 +1,4 @@
-import PubSubJS from './../'
+import PubSubJS from '../../'
 
 describe('PubSubJS tests', () => {
     beforeEach(() => {

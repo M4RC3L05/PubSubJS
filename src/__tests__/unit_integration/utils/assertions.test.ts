@@ -1,4 +1,4 @@
-import { isMyValidString, isValidAction } from '../../utils/assertions'
+import { isMyValidString, isValidAction } from '../../../utils/assertions'
 
 describe('Asertion tests', () => {
     it('Should be a valid string', () => {
