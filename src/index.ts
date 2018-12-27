@@ -1,6 +1,6 @@
 import { isMyValidString, isValidAction } from './utils/assertions'
 import { ISubscription, Action } from './utils/types'
-import uuidv4 from './utils/uuidv4'
+import uuid from 'uuid'
 
 /**
  * The type of subscriptions actions
@@ -13,7 +13,7 @@ const PubSub = (function() {
         topics.hasOwnProperty(topic) && topics[topic] instanceof Array
 
     const _subToTopic = (topic: string, cb: Action<any>) => {
-        const id = uuidv4()
+        const id = uuid.v4()
         topics[topic].push({ id, action: cb })
         return id
     }

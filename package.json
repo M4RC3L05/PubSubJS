@@ -18,11 +18,13 @@
         "build:node": "yarn ts:node",
         "ts:node": "tsc --p .tsconfig/tsconfig.node.json",
         "ts:web": "tsc --p .tsconfig/tsconfig.web.json",
-        "test": "jest",
-        "test:watch": "jest --watch"
+        "test:web": "jest -c jest.config.web.js",
+        "test:node": "jest -c jest.config.node.js",
+        "test:all": "yarn test:web && yarn test:node"
     },
     "devDependencies": {
         "@types/jest": "^23.3.10",
+        "@types/uuid": "^3.4.4",
         "jest": "^23.6.0",
         "rollup": "^0.68.2",
         "rollup-plugin-commonjs": "^9.2.0",
@@ -30,17 +32,6 @@
         "rollup-plugin-uglify": "^6.0.0",
         "ts-jest": "^23.10.5",
         "typescript": "^3.2.2"
-    },
-    "jest": {
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js"
-        ],
-        "transform": {
-            "\\.(ts|tsx)$": "ts-jest"
-        },
-        "testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
     },
     "dependencies": {
         "uuid": "^3.3.2"
