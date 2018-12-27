@@ -42,5 +42,7 @@
         },
         "testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
     },
-    "dependencies": {}
+    "dependencies": {
+        "uuid": "^3.3.2"
+    }
 }
