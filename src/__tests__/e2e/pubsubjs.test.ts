@@ -60,7 +60,6 @@ describe('PubSubJS e2e tests', () => {
 
         const expects = [
             'subscribe',
-            'unsubscribe',
             'publish',
             'clearAllSubscriptions',
             'clearAllByTopic',
@@ -73,7 +72,6 @@ describe('PubSubJS e2e tests', () => {
         expect(windowOBJ).toContain(expects[2])
         expect(windowOBJ).toContain(expects[3])
         expect(windowOBJ).toContain(expects[4])
-        expect(windowOBJ).toContain(expects[5])
     })
 
     it('Should expose the PubSubJS api to the window object [PROD]', async () => {
@@ -105,7 +103,6 @@ describe('PubSubJS e2e tests', () => {
 
         const expects = [
             'subscribe',
-            'unsubscribe',
             'publish',
             'clearAllSubscriptions',
             'clearAllByTopic',
@@ -118,6 +115,5 @@ describe('PubSubJS e2e tests', () => {
         expect(windowOBJ).toContain(expects[2])
         expect(windowOBJ).toContain(expects[3])
         expect(windowOBJ).toContain(expects[4])
-        expect(windowOBJ).toContain(expects[5])
     })
 })

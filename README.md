@@ -34,13 +34,16 @@ import PubSubJS from 'pubsubjs-m4r'
 // const PubSubJS = require("pubsubjs-m4r").default
 
 // Subscribe to topic "abc"
-PubSubJS.subscribe('abc', data => {
+const sub = PubSubJS.subscribe('abc', data => {
     // Your code
     console.log(data)
 })
 
 // Publish to topic "acb"
 PubSubJS.publish('abc', 'Hello')
+
+// unsub!!
+sub()
 ```
 
 ## API
@@ -50,14 +53,7 @@ PubSubJS.publish('abc', 'Hello')
     -   Subscribe - subscribe to notifications on a given topic
 
     ```typescript
-    subscribe: (topic: string, cb: Action<any>) => number
-    ```
-
-    -   Unsubscribe - usubscribe from a given topic
-
-    ```typescript
-    unsubscribe: (topic: string, id: number) => void;
-
+    subscribe: (topic: string, cb: Action<any>) => UnsubAction
     ```
 
     -   Publish - publishes to a given topic

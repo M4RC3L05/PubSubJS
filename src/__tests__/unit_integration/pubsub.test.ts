@@ -16,12 +16,6 @@ describe('PubSubJS tests', () => {
         expect(() => PubSubJS.publish([] as any, 'dsfd')).toThrow()
         expect(() => PubSubJS.publish('sss', 'dsfd')).not.toThrow()
 
-        // UNSUBSCRIBE
-        expect(() => PubSubJS.unsubscribe([] as any, [] as any)).toThrow()
-        expect(() => PubSubJS.unsubscribe('aaa', [] as any)).toThrow()
-        expect(() => PubSubJS.unsubscribe([] as any, '1')).toThrow()
-        expect(() => PubSubJS.unsubscribe('aaa', '1')).not.toThrow()
-
         // CLEARALLBYTOPIC
         expect(() => PubSubJS.clearAllByTopic([] as any)).toThrow()
         expect(() => PubSubJS.clearAllByTopic('df')).not.toThrow()
@@ -131,28 +125,28 @@ describe('PubSubJS tests', () => {
         const mock2 = jest.fn()
         const mock3 = jest.fn()
 
-        const mock1id = PubSubJS.subscribe('a', mock1)
-        const mock2id = PubSubJS.subscribe('a', mock2)
-        const mock3id = PubSubJS.subscribe('a', mock3)
+        const sub1 = PubSubJS.subscribe('a', mock1)
+        const sub2 = PubSubJS.subscribe('a', mock2)
+        const sub3 = PubSubJS.subscribe('a', mock3)
 
         PubSubJS.publish('a', 'a', true)
         expect(mock1).toHaveBeenCalledTimes(1)
         expect(mock2).toHaveBeenCalledTimes(1)
         expect(mock3).toHaveBeenCalledTimes(1)
 
-        PubSubJS.unsubscribe('a', mock1id)
+        sub1()
         PubSubJS.publish('a', 'a', true)
         expect(mock1).toHaveBeenCalledTimes(1)
         expect(mock2).toHaveBeenCalledTimes(2)
         expect(mock3).toHaveBeenCalledTimes(2)
 
-        PubSubJS.unsubscribe('a', mock3id)
+        sub3()
         PubSubJS.publish('a', 'a', true)
         expect(mock1).toHaveBeenCalledTimes(1)
         expect(mock2).toHaveBeenCalledTimes(3)
         expect(mock3).toHaveBeenCalledTimes(2)
 
-        PubSubJS.unsubscribe('a', mock2id)
+        sub2()
         PubSubJS.publish('a', 'a', true)
         expect(mock1).toHaveBeenCalledTimes(1)
         expect(mock2).toHaveBeenCalledTimes(3)

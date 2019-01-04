@@ -1,6 +1,6 @@
 {
     "name": "pubsubjs-m4r",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "author": "M4RC3L05 <joaobat@live.com.pt>",
     "main": "./dist/lib/index.js",
     "description": "PubSub for node and the web",
@@ -39,7 +39,5 @@
         "ts-jest": "^23.10.5",
         "typescript": "^3.2.2"
     },
-    "dependencies": {
-        "uuid": "^3.3.2"
-    }
+    "dependencies": {}
 }

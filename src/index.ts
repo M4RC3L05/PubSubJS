@@ -1,36 +1,30 @@
 import { isMyValidString, isValidAction } from './utils/assertions'
-import { ISubscription, Action } from './utils/types'
-import uuid from 'uuid'
+import { Action, UnsubAction } from './utils/types'
 
 /**
- * The type of subscriptions actions
+ *
+ * The PubSub IIFE
  *
  */
 const PubSub = (function() {
-    const topics: { [key: string]: ISubscription[] } = {}
+    const topics: { [key: string]: Action<any>[] } = {}
 
     const _hasTopic = (topic: string) =>
         topics.hasOwnProperty(topic) && topics[topic] instanceof Array
 
-    const _subToTopic = (topic: string, cb: Action<any>) => {
-        const id = uuid.v4()
-        topics[topic].push({ id, action: cb })
-        return id
-    }
-
-    const _unsubFromTopic = (topic: string, id: string) =>
-        (topics[topic] = topics[topic].filter(subs => subs.id !== id))
+    const _subToTopic = (topic: string, cb: Action<any>) =>
+        topics[topic].push(cb)
 
     const _notify = (topic: string, data: any, sync: boolean = false) =>
         sync
-            ? topics[topic].forEach(subs => subs.action.call(null, data))
+            ? topics[topic].forEach(subs => subs.call(null, data))
             : setTimeout(() => {
                   if (!_hasTopic(topic)) return
-                  topics[topic].forEach(subs => subs.action.call(null, data))
+                  topics[topic].forEach(subs => subs.call(null, data))
               }, 0)
 
     const _unsubAll = (topic: string = '') => {
-        if (topic) return delete topics[topic]
+        if (topic) delete topics[topic]
         else for (const topic in topics) delete topics[topic]
     }
 
@@ -40,30 +34,19 @@ const PubSub = (function() {
      * @alias subscribe
      * @param { String } topic The topic to listen on
      * @param { Action<any> } cb The actions to be called when publish on subscribed topic
-     * @return { Number } The sub id
+     * @return { UnsubAction } The unsub action
      */
-    const subscribe = (topic: string, cb: Action<any>) => {
+    const subscribe = (topic: string, cb: Action<any>): UnsubAction => {
         if (!isMyValidString(topic)) throw Error('Topic has to be a string.')
         if (!isValidAction(cb)) throw Error('Action has to be a function.')
         if (!_hasTopic(topic)) topics[topic] = []
 
-        return _subToTopic(topic, cb)
-    }
+        _subToTopic(topic, cb)
 
-    /**
-     * Unsubscribes to a given topic
-     * @function
-     * @alias unsubscribe
-     * @param { String } topic The topic to unsubscribe
-     * @param { String } id The sub id
-     * @return {}
-     */
-    const unsubscribe = (topic: string, id: string) => {
-        if (!isMyValidString(topic)) throw Error('Topic has to be a string.')
-        if (!isMyValidString(id)) throw Error('ID has to be a string.')
-        if (!_hasTopic(topic)) return
-
-        _unsubFromTopic(topic, id)
+        return () => {
+            const index = topics[topic].indexOf(cb)
+            topics[topic].splice(index, 1)
+        }
     }
 
     /**
@@ -71,11 +54,11 @@ const PubSub = (function() {
      * @function
      * @alias publish
      * @param { String } topic The topic to publish
-     * @param {} data The data to be published
+     * @param { any } data The data to be published
      * @param { Boolean } sync Indicates if wheather the publish should be asyncronous
-     * @return {}
+     * @return { void }
      */
-    const publish = (topic: string, data: any, sync: boolean = false) => {
+    const publish = (topic: string, data: any, sync: boolean = false): void => {
         if (!isMyValidString(topic)) throw Error('Topic has to be a string.')
         if (!_hasTopic(topic)) return
 
@@ -86,18 +69,18 @@ const PubSub = (function() {
      * Clear all existing subscriptions
      * @function
      * @alias clearAllSubscriptions
-     * @return {}
+     * @return { void }
      */
-    const clearAllSubscriptions = () => _unsubAll()
+    const clearAllSubscriptions = (): void => _unsubAll()
 
     /**
      * Clear all existing subscriptions on a given topic
      * @function
-     * @alias clearAllSubscriptions
+     * @alias clearAllByTopic
      * @param { String } topic The topic to remove all subscriptions
-     * @return {}
+     * @return { void }
      */
-    const clearAllByTopic = (topic: string) => {
+    const clearAllByTopic = (topic: string): void => {
         if (!isMyValidString(topic)) throw Error('Topic has to be a string.')
         if (!_hasTopic(topic)) return
 
@@ -107,14 +90,13 @@ const PubSub = (function() {
     /**
      * Gets all topics
      * @function
-     * @alias clearAllSubscriptions
+     * @alias getTopics
      * @return { String[] } The list of topics
      */
-    const getTopics = () => Object.keys(topics)
+    const getTopics = (): string[] => Object.keys(topics)
 
     return {
         subscribe,
-        unsubscribe,
         publish,
         clearAllSubscriptions,
         clearAllByTopic,
