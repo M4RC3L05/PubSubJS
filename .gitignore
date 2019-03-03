@@ -96,7 +96,7 @@ typings/
 .history
 
 # End of https://www.gitignore.io/api/node,visualstudiocode
-src/*.js
+src/**/*.js
 dist
 out
 build
