@@ -107,3 +107,5 @@ umd
 *.html
 !dev.html
 !prod.html
+src/__tests__/e2e/html/pubsubjs.dev.js
+src/__tests__/e2e/html/pubsubjs.prod.js
